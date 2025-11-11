@@ -1,5 +1,10 @@
 package com.c3.logitrack.repository;
 
-public class ProductoRepository {
-    
+import com.c3.logitrack.entities.Producto;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProductoRepository extends JpaRepository<Producto, Long> {
+    // Puedes agregar consultas personalizadas si es necesario
 }
