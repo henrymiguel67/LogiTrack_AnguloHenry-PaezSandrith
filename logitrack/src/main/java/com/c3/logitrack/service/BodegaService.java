@@ -24,6 +24,7 @@ public class BodegaService {
     }
 
     // Buscar bodega por ID
+    @SuppressWarnings("null")
     public Bodega obtenerBodegaPorId(Long id) {
         return bodegaRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Bodega con ID " + id + " no encontrada"));
@@ -66,6 +67,7 @@ public class BodegaService {
     }
 
     // Eliminar bodega
+    @SuppressWarnings("null")
     public void eliminarBodega(Long id) {
         Bodega bodegaExistente = obtenerBodegaPorId(id);
         bodegaRepository.delete(bodegaExistente);

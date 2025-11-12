@@ -18,11 +18,13 @@ public class MovimientoService {
         return movimientoRepository.findAll();
     }
 
+    @SuppressWarnings("null")
     public Movimiento getMovimientoById(Long id) {
         return movimientoRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Movimiento no encontrado con id: " + id));
     }
 
+    @SuppressWarnings("null")
     public Movimiento createMovimiento(Movimiento movimiento) {
         return movimientoRepository.save(movimiento);
     }
@@ -36,6 +38,7 @@ public class MovimientoService {
         return movimientoRepository.save(movimiento);
     }
 
+    @SuppressWarnings("null")
     public void deleteMovimiento(Long id) {
         Movimiento movimiento = getMovimientoById(id);
         movimientoRepository.delete(movimiento);

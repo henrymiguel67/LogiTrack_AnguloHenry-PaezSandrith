@@ -17,8 +17,8 @@ VALUES
 
 INSERT INTO usuarios (username, password, rol, activo) 
 VALUES
-    ('admin', 'adminpasswordhashed', 'ADMIN', TRUE),
-    ('empleado1', 'empleadopasswordhashed', 'EMPLEADO', TRUE);
+    ('admin', '1234', 'ADMIN', TRUE),
+    ('empleado1', 'abcd', 'EMPLEADO', TRUE);
 
 
 INSERT INTO movimientos (fecha, tipo, usuario_responsable_id, bodega_origen_id, bodega_destino_id, producto_id, cantidad)

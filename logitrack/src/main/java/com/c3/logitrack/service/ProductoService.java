@@ -18,11 +18,13 @@ public class ProductoService {
         return productoRepository.findAll();
     }
 
+    @SuppressWarnings("null")
     public Producto getProductoById(Long id) {
         return productoRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Producto no encontrado con id: " + id));
     }
 
+    @SuppressWarnings("null")
     public Producto createProducto(Producto producto) {
         return productoRepository.save(producto);
     }
@@ -36,6 +38,7 @@ public class ProductoService {
         return productoRepository.save(producto);
     }
 
+    @SuppressWarnings("null")
     public void deleteProducto(Long id) {
         Producto producto = getProductoById(id);
         productoRepository.delete(producto);

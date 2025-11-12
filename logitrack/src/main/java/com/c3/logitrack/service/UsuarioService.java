@@ -18,11 +18,13 @@ public class UsuarioService {
         return usuarioRepository.findByUsername(username);
     }
 
+    @SuppressWarnings("null")
     public Usuario getUsuarioById(Long id) {
         return usuarioRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado con id: " + id));
     }
 
+    @SuppressWarnings("null")
     public Usuario createUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
