@@ -1,22 +1,40 @@
 package com.c3.logitrack.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import com.c3.logitrack.entities.enums.RolUsuario;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
+@Table(name = "usuarios")
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Size(min = 3, max = 50)
+    @Column(unique = true, nullable = false)
     private String username;
+
+    @NotBlank
+    @Size(min = 6, max = 255)
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = true)
     private String email;
 
-    // Getters y setters
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private RolUsuario rol;  // ADMIN o EMPLEADO
+
+    @Column(nullable = false)
+    private boolean activo = true;
+
+    // ===== Getters y Setters =====
+
     public Long getId() {
         return id;
     }
@@ -47,5 +65,21 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public RolUsuario getRol() {
+        return rol;
+    }
+
+    public void setRol(RolUsuario rol) {
+        this.rol = rol;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 }
