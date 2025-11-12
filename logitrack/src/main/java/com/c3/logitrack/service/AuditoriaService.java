@@ -17,11 +17,13 @@ public class AuditoriaService {
         return auditoriaRepository.findAll();
     }
 
+    @SuppressWarnings("null")
     public Auditoria getAuditById(Long id) {
         return auditoriaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Registro de auditoría no encontrado con id: " + id));
     }
 
+    @SuppressWarnings("null")
     public Auditoria saveAuditEntry(Auditoria auditoria) {
         return auditoriaRepository.save(auditoria);
     }
