@@ -23,7 +23,7 @@ public class AuthController {
         String username = loginRequest.get("username");
         String password = loginRequest.get("password");
 
-        if(username == null || password == null) {
+        if (username == null || password == null) {
             Map<String, Object> error = new HashMap<>();
             error.put("message", "Username y password son obligatorios");
             return ResponseEntity.badRequest().body(error);
@@ -35,8 +35,7 @@ public class AuthController {
             Map<String, Object> response = new HashMap<>();
             response.put("message", "Inicio de sesión exitoso");
             response.put("usuario", usuario.getUsername());
-            response.put("rol", usuario.getRol());
-            response.put("activo", usuario.isActivo());
+            response.put("email", usuario.getEmail());
 
             return ResponseEntity.ok(response);
 
@@ -54,7 +53,7 @@ public class AuthController {
         String email = request.get("email");
         String password = request.get("password");
 
-        if(username == null || password == null) {
+        if (username == null || password == null) {
             Map<String, Object> error = new HashMap<>();
             error.put("message", "Username y password son obligatorios");
             return ResponseEntity.badRequest().body(error);
@@ -62,11 +61,12 @@ public class AuthController {
 
         try {
             Usuario nuevo = authService.registerUser(username, email, password);
+
             Map<String, Object> response = new HashMap<>();
             response.put("message", "Usuario registrado correctamente");
             response.put("id", nuevo.getId());
             response.put("username", nuevo.getUsername());
-            response.put("rol", nuevo.getRol());
+            response.put("email", nuevo.getEmail());
 
             return ResponseEntity.ok(response);
 
